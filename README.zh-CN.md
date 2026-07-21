@@ -10,6 +10,12 @@
 
 > 重要提醒：这是行为归因，不是模型身份证明。虽然有论文依据，但也仅作为参考。
 
+## 研究依据
+
+本项目基于论文及数据集 [Single-token output distributions as behavioral fingerprints of large language models](https://zenodo.org/records/21278557)。论文使用完整的 40 组测试时，同模型验证约达到 **AUC 0.971**、**EER 7.3%**；但精确识别模型家族或版本的准确率只有约 **59.5%**。因此，“判断两个端点是否像同一个模型”通常比“精确说出模型版本”更可靠。
+
+公开参考库覆盖 GPT、Claude、Gemini/Gemma、Qwen、Mistral、Llama 衍生模型、DeepSeek、GLM、Nova、Kimi、Command 等系列。数据包没有公开论文使用的逐字提示词，因此用本仓库重构提示词得到的匹配应标记为近似结果。
+
 ## 快速开始
 
 ```bash
@@ -101,12 +107,6 @@ without explanation, punctuation, or additional text.
 快速探针会要求模型随机选择数字、字母、单词、颜色、动物、城市和硬币正反面。参考模型与未知 API 必须使用完全相同的提示词、temperature、输出长度和 reasoning 设置，否则比较结果可能失真。
 
 需要更强证据时，可以用多种语言重复测试。测试中不要发送个人数据、生产数据或公司机密。
-
-## 研究依据
-
-本项目基于论文及数据集 [Single-token output distributions as behavioral fingerprints of large language models](https://zenodo.org/records/21278557)。论文使用完整的 40 组测试时，同模型验证约达到 **AUC 0.971**、**EER 7.3%**；但精确识别模型家族或版本的准确率只有约 **59.5%**。因此，“判断两个端点是否像同一个模型”通常比“精确说出模型版本”更可靠。
-
-公开参考库覆盖 GPT、Claude、Gemini/Gemma、Qwen、Mistral、Llama 衍生模型、DeepSeek、GLM、Nova、Kimi、Command 等系列。数据包没有公开论文使用的逐字提示词，因此用本仓库重构提示词得到的匹配应标记为近似结果。
 
 ## 局限与安全
 

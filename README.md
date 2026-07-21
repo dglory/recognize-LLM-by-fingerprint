@@ -10,6 +10,12 @@ It works with many OpenAI-compatible proxies and gateways. It does not need mode
 
 > Important: this is behavioral attribution, not proof of model identity. Although the method is supported by research, the result should only be used as a reference.
 
+## Research basis
+
+This workflow is based on [Single-token output distributions as behavioral fingerprints of large language models](https://zenodo.org/records/21278557). In the paper's verification experiment, the full 40-cell battery reached approximately **AUC 0.971** and **EER 7.3%**. Exact family/version classification was weaker (about **59.5% accuracy**), so same-model verification is more reliable than naming an exact version.
+
+The public catalog covers GPT, Claude, Gemini/Gemma, Qwen, Mistral, Llama derivatives, DeepSeek, GLM, Nova, Kimi, Command, and smaller families. The catalog's original prompt text was not included, so matches made with this repository's reconstructed prompts should be treated as approximate.
+
 ## Quick start
 
 ```bash
@@ -101,12 +107,6 @@ without explanation, punctuation, or additional text.
 The quick battery asks for random numbers, a letter, a word, colors, an animal, a city, and a coin flip. The exact wording and sampling settings matter; use the same prompts, temperature, token limit, and reasoning settings for reference and unknown APIs.
 
 For a stronger screen, repeat the battery in several languages. Do not send personal, confidential, or production data.
-
-## What the research shows
-
-This workflow is based on [Single-token output distributions as behavioral fingerprints of large language models](https://zenodo.org/records/21278557). In the paper's verification experiment, the full 40-cell battery reached approximately **AUC 0.971** and **EER 7.3%**. Exact family/version classification was weaker (about **59.5% accuracy**), so same-model verification is more reliable than naming an exact version.
-
-The public catalog covers GPT, Claude, Gemini/Gemma, Qwen, Mistral, Llama derivatives, DeepSeek, GLM, Nova, Kimi, Command, and smaller families. The catalog's original prompt text was not included, so matches made with this repository's reconstructed prompts should be treated as approximate.
 
 ## Limitations and safety
 
