@@ -2,9 +2,27 @@
 
 **Language / 语言:** English · [简体中文](README.zh-CN.md)
 
+[![CI](https://github.com/dglory/recognize-LLM-by-fingerprint/actions/workflows/ci.yml/badge.svg)](https://github.com/dglory/recognize-LLM-by-fingerprint/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Identify the model behind a black-box OpenAI-compatible API using repeated behavioral probes. The method does not require model weights, hidden states, or logprobs: it compares empirical answer distributions with reference fingerprints.
 
 > This is probabilistic attribution, not cryptographic proof. Never identify a model from one answer such as `7`, `42`, or `blue`.
+
+## 30-second quick start
+
+```bash
+git clone https://github.com/dglory/recognize-LLM-by-fingerprint.git
+cd recognize-LLM-by-fingerprint
+export OPENAI_BASE_URL="https://example.com/v1"
+export OPENAI_API_KEY="<your-key>"
+python3 identify.py --model "provider/model-id" --repetitions 12
+```
+
+The first run may download the public Zenodo reference catalog (about 52 MB) and cache it locally. Use `--no-reference-download` with a local `--reference` file to avoid network access.
+
+## Repository topics
+
+Suggested GitHub topics: `llm`, `llm-fingerprinting`, `model-identification`, `api-audit`, `openai-compatible`, `hermes`, `openclaw`, `ai-security`, `llm-observability`.
 
 ## What it does
 

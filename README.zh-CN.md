@@ -2,11 +2,29 @@
 
 **Language / 语言:** [English](README.md) · 简体中文 (`README.zh-CN.md`)
 
+[![CI](https://github.com/dglory/recognize-LLM-by-fingerprint/actions/workflows/ci.yml/badge.svg)](https://github.com/dglory/recognize-LLM-by-fingerprint/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 用黑盒行为指纹判断一个 OpenAI-compatible API 背后的模型、模型家族或代理端点。
 
 这个项目来自对 Zenodo 数据集 [Single-token output distributions as behavioral fingerprints of large language models](https://zenodo.org/records/21278557) 的复现性整理。核心方法是不依赖权重、logprobs 或隐藏状态，而是重复发送一组低成本 prompt，比较回答分布。
 
 > 结论是概率性鉴别，不是模型来源的密码学证明。不要把一次回答 `7`、`42` 或 `blue` 直接映射成某个模型。
+
+## 30 秒快速开始
+
+```bash
+git clone https://github.com/dglory/recognize-LLM-by-fingerprint.git
+cd recognize-LLM-by-fingerprint
+export OPENAI_BASE_URL="https://example.com/v1"
+export OPENAI_API_KEY="<your-key>"
+python3 identify.py --model "provider/model-id" --repetitions 12
+```
+
+首次运行可能会下载公开 Zenodo 参考库（约 52 MB）并缓存到本地。使用本地 `--reference` 文件和 `--no-reference-download` 可以禁止网络下载。
+
+## 推荐 GitHub Topics
+
+建议设置这些 Topics：`llm`、`llm-fingerprinting`、`model-identification`、`api-audit`、`openai-compatible`、`hermes`、`openclaw`、`ai-security`、`llm-observability`。
 
 ## 能做什么
 
