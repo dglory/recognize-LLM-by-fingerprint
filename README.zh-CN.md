@@ -8,8 +8,6 @@
 
 它适用于许多兼容 OpenAI 接口的代理和网关，不需要模型权重、隐藏状态或 logprobs。
 
-> 重要提醒：这是行为归因，不是模型身份证明。虽然有论文依据，但也仅作为参考。
-
 ## 研究依据
 
 本项目基于论文及数据集 [Single-token output distributions as behavioral fingerprints of large language models](https://zenodo.org/records/21278557)。论文使用完整的 40 组测试时，同模型验证约达到 **AUC 0.971**、**EER 7.3%**；但精确识别模型家族或版本的准确率只有约 **59.5%**。因此，“判断两个端点是否像同一个模型”通常比“精确说出模型版本”更可靠。
@@ -122,3 +120,5 @@ without explanation, punctuation, or additional text.
 > Bruckner, Tomáš. *Single-token output distributions as behavioral fingerprints of large language models*. Zenodo, 2026. [DOI: 10.5281/zenodo.21278557](https://doi.org/10.5281/zenodo.21278557)。
 
 本仓库是面向 Agent 和 API 审计场景的操作实现，不是论文作者发布的原始实现。
+
+> 重要提醒：这是行为归因，不是模型身份证明。虽然有论文依据，但也仅作为参考。

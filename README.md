@@ -8,8 +8,6 @@ You have an API URL and a key, but you do not know what model is really behind i
 
 It works with many OpenAI-compatible proxies and gateways. It does not need model weights, hidden states, or logprobs.
 
-> Important: this is behavioral attribution, not proof of model identity. Although the method is supported by research, the result should only be used as a reference.
-
 ## Research basis
 
 This workflow is based on [Single-token output distributions as behavioral fingerprints of large language models](https://zenodo.org/records/21278557). In the paper's verification experiment, the full 40-cell battery reached approximately **AUC 0.971** and **EER 7.3%**. Exact family/version classification was weaker (about **59.5% accuracy**), so same-model verification is more reliable than naming an exact version.
@@ -122,3 +120,5 @@ Results describe an **API behavior profile**, not necessarily bare model weights
 > Bruckner, Tomáš. *Single-token output distributions as behavioral fingerprints of large language models*. Zenodo, 2026. [DOI: 10.5281/zenodo.21278557](https://doi.org/10.5281/zenodo.21278557).
 
 This repository is an operational implementation for Agents and API audits, not the original paper's implementation.
+
+> Important: this is behavioral attribution, not proof of model identity. Although the method is supported by research, the result should only be used as a reference.
