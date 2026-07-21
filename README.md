@@ -8,7 +8,7 @@ You have an API URL and a key, but you do not know what model is really behind i
 
 It works with many OpenAI-compatible proxies and gateways. It does not need model weights, hidden states, or logprobs.
 
-> Important: this is behavioral attribution, not proof of model identity. A single answer such as `42` or `blue` tells you nothing reliable.
+> Important: this is behavioral attribution, not proof of model identity. Although the method is supported by research, the result should only be used as a reference.
 
 ## Quick start
 
