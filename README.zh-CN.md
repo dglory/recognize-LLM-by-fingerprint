@@ -124,6 +124,26 @@ export OPENAI_API_KEY="<your-key>"
 
 Skill 会优先做协议探测，再执行行为采样。如果服务拒绝猜测的模型名，不要无限尝试；记录其 4xx 错误并要求用户提供支持的模型名。
 
+## 使用命令行工具
+
+仓库还包含一个零第三方依赖的 Python CLI，支持 Responses 和 Chat Completions，解析 JSON/SSE，重试临时错误，并把公共参考库缓存到 `~/.cache/model-api-fingerprint/distributions.json`。
+
+```bash
+export OPENAI_BASE_URL="https://example.com/v1"
+export OPENAI_API_KEY="<your-key>"
+python3 identify.py --model "provider/model-id" --repetitions 12
+```
+
+高可信筛查可使用 `--repetitions 30`；使用 `--workers 2` 降低并发；使用 `--reference path/to/distributions.json` 指定本地参考库；使用 `--no-reference-download` 禁止首次自动下载 Zenodo 数据。很多 API 要求 `--model`，但该值不应被当作识别真值。
+
+对于 OpenClaw，可将同一命令暴露为 shell/exec 工具，并把 `OPENAI_BASE_URL`、`OPENAI_API_KEY` 作为运行时 secret 注入。CLI 不要求 OpenClaw 专用插件，但 Agent 必须有 Python 执行权限和出站 HTTPS 权限。
+
+运行测试：
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
 ## 参考数据
 
 优先使用“用完全相同 prompt、参数和 provider 采集”的本地参考库。没有本地库时，可以缓存 Zenodo 数据：

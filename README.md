@@ -104,6 +104,26 @@ Use the model-api-fingerprint skill to identify this OpenAI-compatible API.
 
 The skill first checks protocol metadata, then samples behavior, parses JSON or SSE, computes JSD, and returns ranked candidates. It must not guess model names indefinitely after permanent 4xx errors.
 
+## Use the CLI
+
+The repository also includes a dependency-free Python CLI. It supports Responses and Chat Completions endpoints, parses JSON/SSE, retries transient failures, and caches the public reference catalog at `~/.cache/model-api-fingerprint/distributions.json`.
+
+```bash
+export OPENAI_BASE_URL="https://example.com/v1"
+export OPENAI_API_KEY="<your-key>"
+python3 identify.py --model "provider/model-id" --repetitions 12
+```
+
+Use `--repetitions 30` for a stronger screen, `--workers 2` for a conservative rate, `--reference path/to/distributions.json` for a local catalog, or `--no-reference-download` to forbid the first-run Zenodo download. The `--model` value is required by many APIs and is not treated as truth.
+
+For OpenClaw, expose the same command through its shell/exec tool and pass `OPENAI_BASE_URL` and `OPENAI_API_KEY` as runtime secrets. No OpenClaw-specific plugin is required for the CLI; the agent only needs permission to run Python and make outbound HTTPS requests.
+
+Run tests with:
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
 ## Reference data
 
 Prefer a local catalog collected with exactly the same prompts, parameters, and provider. Otherwise cache the Zenodo artifact:

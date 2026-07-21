@@ -98,6 +98,14 @@ Use wording such as “highly consistent with `openai/gpt-5.4`,” not “proved
 
 ## Quick implementation pattern
 
+When a user wants a direct runnable check, prefer the repository's `identify.py` over rewriting a sampler inline:
+
+```bash
+python3 identify.py --base-url "$OPENAI_BASE_URL" --model "provider/model-id" --repetitions 12
+```
+
+Use `--repetitions 30` for confirmation and `--no-reference-download` when the user has supplied a local `--reference` catalog.
+
 For a Python implementation, keep counts in memory and use a bounded thread pool. Parse `response.output_text.done` from SSE and `response.completed.response.model` from Responses streams; for Chat Completions parse `choices[0].message.content` and `model`. Retry transient 429/5xx responses with short exponential backoff, but do not retry permanent 4xx model/parameter errors.
 
 The result should be a compact table or JSON object like:
